@@ -4,24 +4,21 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.sample.decorators.DoubleEventDecorator;
 import com.prolificinteractive.materialcalendarview.sample.decorators.EventDecorator;
 import com.prolificinteractive.materialcalendarview.sample.decorators.HighlightWeekendsDecorator;
-import com.prolificinteractive.materialcalendarview.sample.decorators.MySelectorDecorator;
 import com.prolificinteractive.materialcalendarview.sample.decorators.OneDayDecorator;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.Executors;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Shows off the most basic usage
@@ -59,8 +56,10 @@ public class BasicActivityDecorated extends AppCompatActivity implements OnDateS
         List<CalendarDay> doubleEventDays = new ArrayList<>();
         doubleEventDays.add(CalendarDay.today());
 
+        widget.setSelectionColor(ContextCompat.getColor(this, android.R.color.holo_blue_light));
+
         widget.addDecorators(
-                new MySelectorDecorator(this),
+                //new MySelectorDecorator(this),
                 new DoubleEventDecorator(Color.BLUE, Color.GREEN, doubleEventDays),
                 new HighlightWeekendsDecorator(),
                 oneDayDecorator
